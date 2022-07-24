@@ -109,6 +109,28 @@ public:
             size--;
         }
     }
+//给定一个链表的头节点  head ，返回链表开始入环的第一个节点。 如果链表无环，则返回 null
+    Node *detectCycle(Node *head) {
+        if(head==nullptr){
+            return nullptr;
+        }
+        Node* p1=head;
+        Node* p2=head;
+        do{
+            if(p2->next==nullptr||p2->next->next==nullptr){
+                return nullptr;
+            }
+            p1=p1->next;
+            p2=p2->next->next;
+
+        }while(p1!=p2);
+        Node* p3=head;
+        while(p1!=p3){
+            p3=p3->next;
+            p1=p1->next;
+        }
+        return p3;
+    }
 private:
     Node * head;
     int size;
