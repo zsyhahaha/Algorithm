@@ -82,16 +82,40 @@ public:
     }
 };
 
+class solution3
+{
+public:
+    ListNode* reverseList(ListNode* head) {
+        stack<ListNode*> stack ;
+        if(head == nullptr)
+            return NULL;
+        while(head != nullptr)
+        {
+            stack.push(head);
+            head = head->next;
+        }
+        ListNode * node = stack.top();
+        ListNode * dummy = node ;
+        stack.pop();
+        while(!stack.empty())
+        {
+            ListNode * temp = stack.top();
+            node->next = temp;
+            node = node->next;
+            stack.pop();
+        }
+        node->next = nullptr;
+        return dummy;
+    }
+};
+
 int main() {
     ListNode * a = new ListNode;
     createList(a,5);
     printList(a);
-    vector<int> b;
-    solution2 s;
-    b = s.reversePrint(a);
-    for(int i = 0; i < b.size() ; i++)
-    {
-        cout<<b[i]<<"   ";
-    }
+    ListNode * b;
+    solution3 s;
+    b = s.reverseList(a);
+    printList(b);
     return 0;
 }
