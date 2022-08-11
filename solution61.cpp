@@ -2,9 +2,9 @@
 // 请定义一个函数实现字符串左旋转操作的功能。比如，输入字符串"abcdefg"和数字2，该函数将返回左旋转两位得到的结果"cdefgab"。
 #include <iostream>
 #include <algorithm>
-#include <queue>
 
 using namespace std;
+
 //自己的解法
 class Solution {
 public:
@@ -12,24 +12,17 @@ public:
         if(n == 0)
             return s;
 
-        queue<char> que;
-        for(int i = 0; i < s.size(); i++)
+        string que;
+        for(int i = n; i < s.size(); i++)
         {
-            que.push(s[i]);
+            que += s[i];
         }
         for(int i = 0; i < n; i++)
         {
-            char temp = que.front();
-            que.pop();
-            que.push(temp);
-        }
-        for(int i = 0; i < s.size(); i++)
-        {
-            s[i] = que.front();
-            que.pop();
+            que += s[i];
         }
 
-        return s;
+        return que;
     }
 };
 
@@ -62,7 +55,7 @@ int main()
     string s = "abcdefg";
     cout<<"s = "<<s<<endl;
     Solution solution;
-    string s2 = solution.reverseLeftWords(s,7);
+    string s2 = solution.reverseLeftWords(s,2);
     cout<<"after reverse s = "<<s2<<endl;
     return 0;
 }
