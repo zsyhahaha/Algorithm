@@ -17,6 +17,7 @@ void print(ListNode * node)
     node = node->next;
     print(node);
 }
+
 class Solution {
 public:
     void deleteNode(ListNode* node) {
