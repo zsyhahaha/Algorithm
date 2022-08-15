@@ -10,9 +10,7 @@ using namespace std;
 //有问题，但不知道在哪
 class myMaxQueue {
 public:
-    myMaxQueue() {
-
-    }
+    myMaxQueue() {}
 
     int max_value() {
         if(max_stk.empty())
